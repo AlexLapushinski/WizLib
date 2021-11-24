@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "WizLib_Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WizLib_Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WizLib_Model.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WizLib_Model/1.0.0": {
+      "type": "project",
+      "path": "../WizLib_Model/WizLib_Model.csproj",
+      "msbuildProject": "../WizLib_Model/WizLib_Model.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "WizLib_Model >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\alex.lapushinski\\.nuget\\packages\\": {}
@@ -43,7 +62,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Work\\Courses\\WizLib\\WizLib_Model\\WizLib_Model.csproj": {
+              "projectPath": "C:\\Work\\Courses\\WizLib\\WizLib_Model\\WizLib_Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

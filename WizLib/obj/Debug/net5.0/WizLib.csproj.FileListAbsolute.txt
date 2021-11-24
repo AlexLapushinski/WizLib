@@ -342,7 +342,6 @@ C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\WizLib.TagHelpers.output.cache
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\WizLib.RazorCoreGenerate.cache
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -355,3 +354,7 @@ C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\WizLib.dll
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\ref\WizLib.dll
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\WizLib.pdb
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\WizLib.genruntimeconfig.cache
+C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\WizLib_DataAccess.dll
+C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\WizLib_Model.dll
+C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\WizLib_DataAccess.pdb
+C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\WizLib_Model.pdb
