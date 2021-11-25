@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WizLib_Model.Models;
 
 namespace WizLib_DataAccess.Data
 {
@@ -11,6 +12,6 @@ namespace WizLib_DataAccess.Data
         {
         }
 
-
+        public DbSet<Category> Categories { set; get; }
     }
 }
