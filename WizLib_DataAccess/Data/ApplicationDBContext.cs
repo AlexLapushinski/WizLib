@@ -13,5 +13,6 @@ namespace WizLib_DataAccess.Data
         }
 
         public DbSet<Category> Categories { set; get; }
+        public DbSet<Genre> Genres { set; get; }
     }
 }
