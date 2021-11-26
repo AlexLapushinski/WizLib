@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace WizLib_Model.Models
@@ -12,8 +13,11 @@ namespace WizLib_Model.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [MaxLength(15)]
         public string ISBN { get; set; }
         [Required]
         public double Price { get; set; }
+        [NotMapped]
+        public string PriceRange { get; set; }
     }
 }
