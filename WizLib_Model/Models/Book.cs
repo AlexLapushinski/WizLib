@@ -17,8 +17,13 @@ namespace WizLib_Model.Models
         public string ISBN { get; set; }
         [Required]
         public double Price { get; set; }        
-        [ForeignKey("BookDetail")]
+
+        [ForeignKey("BookDetail")] // one-to-one relation
         public int BookDetail_id { get; set; }
         public BookDetail BookDetail { get; set; }
+
+        [ForeignKey("Publisher")] // one-to-many relation
+        public int Publisher_id { get; set; }
+        public Publisher Publisher { get; set; }
     }
 }
