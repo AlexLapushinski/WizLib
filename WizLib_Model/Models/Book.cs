@@ -17,8 +17,8 @@ namespace WizLib_Model.Models
         public string ISBN { get; set; }
         [Required]
         public double Price { get; set; }        
-        [ForeignKey("Category")]
-        public int Category_id { get; set; }
-        public Category Category { get; set; }
+        [ForeignKey("BookDetail")]
+        public int BookDetail_id { get; set; }
+        public BookDetail BookDetail { get; set; }
     }
 }
