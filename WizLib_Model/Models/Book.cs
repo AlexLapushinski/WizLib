@@ -16,8 +16,9 @@ namespace WizLib_Model.Models
         [MaxLength(15)]
         public string ISBN { get; set; }
         [Required]
-        public double Price { get; set; }
-        [NotMapped]
-        public string PriceRange { get; set; }
+        public double Price { get; set; }        
+        [ForeignKey("Category")]
+        public int Category_id { get; set; }
+        public Category Category { get; set; }
     }
 }
