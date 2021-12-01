@@ -19,12 +19,18 @@ namespace WizLib_DataAccess.Data
         public DbSet<Publisher> Publishers { set; get; }
         public DbSet<BookAuthor> BookAuthors { set; get; }
 
+        public DbSet<Fluent_BookDetail> Fluent_BookDetails { set; get; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // configure Fluent API
 
             // composite key
             modelBuilder.Entity<BookAuthor>().HasKey(ba => new { ba.Author_Id, ba.Book_Id });
+
+            // BookDetail
+            modelBuilder.Entity<Fluent_BookDetail>().HasKey(bd => bd.BookDetail_Id);
+            modelBuilder.Entity<Fluent_BookDetail>().Property(bd => bd.NumberOfChapters).IsRequired();
         }
     }
 }
