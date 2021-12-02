@@ -12,7 +12,7 @@ namespace WizLib_DataAccess.Data
         {
         }
 
-        //public DbSet<Category> Categories { set; get; }
+        public DbSet<Category> Categories { set; get; }
         public DbSet<Genre> Genres { set; get; }
         public DbSet<Book> Books { set; get; }
         public DbSet<BookDetail> BookDetails { set; get; }
@@ -29,6 +29,10 @@ namespace WizLib_DataAccess.Data
         {
             // configure Fluent API
 
+            // Category table name and column name
+            modelBuilder.Entity<Category>().ToTable("tbl_category");
+            modelBuilder.Entity<Category>().Property(c => c.Name).HasColumnName("CategoryName");
+
             // composite key
             modelBuilder.Entity<BookAuthor>().HasKey(ba => new { ba.Author_Id, ba.Book_Id });
 
@@ -41,6 +45,10 @@ namespace WizLib_DataAccess.Data
             modelBuilder.Entity<Fluent_Book>().Property(b => b.ISBN).IsRequired().HasMaxLength(15);
             modelBuilder.Entity<Fluent_Book>().Property(b => b.Title).IsRequired();
             modelBuilder.Entity<Fluent_Book>().Property(b => b.Price).IsRequired();
+            // one to one relation between book and book detail
+            modelBuilder.Entity<Fluent_Book>()
+                .HasOne(b => b.Fluent_BookDetail)
+                .WithOne(b => b.Fluent_Book).HasForeignKey<Fluent_Book>("BookDetail_id");
 
             // Author
             modelBuilder.Entity<Fluent_Author>().HasKey(b => b.Author_Id);
@@ -52,6 +60,8 @@ namespace WizLib_DataAccess.Data
             modelBuilder.Entity<Fluent_Publisher>().HasKey(b => b.Publisher_Id);
             modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Name).IsRequired();
             modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Location).IsRequired();
+
+            
         }
     }
 }

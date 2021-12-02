@@ -11,6 +11,9 @@ namespace WizLib_Model.Models
         public int Book_Id { get; set; }
         public string Title { get; set; }
         public string ISBN { get; set; }
-        public double Price { get; set; }   
+        public double Price { get; set; }
+
+        public int BookDetail_id { get; set; }
+        public Fluent_BookDetail Fluent_BookDetail { get; set; }
     }
 }
