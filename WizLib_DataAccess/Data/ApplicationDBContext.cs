@@ -15,11 +15,15 @@ namespace WizLib_DataAccess.Data
         //public DbSet<Category> Categories { set; get; }
         public DbSet<Genre> Genres { set; get; }
         public DbSet<Book> Books { set; get; }
+        public DbSet<BookDetail> BookDetails { set; get; }
         public DbSet<Author> Authors { set; get; }
         public DbSet<Publisher> Publishers { set; get; }
         public DbSet<BookAuthor> BookAuthors { set; get; }
 
         public DbSet<Fluent_BookDetail> Fluent_BookDetails { set; get; }
+        public DbSet<Fluent_Book> Fluent_Books { set; get; }
+        public DbSet<Fluent_Author> Fluent_Authors { set; get; }
+        public DbSet<Fluent_Publisher> Fluent_Publishers { set; get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +35,23 @@ namespace WizLib_DataAccess.Data
             // BookDetail
             modelBuilder.Entity<Fluent_BookDetail>().HasKey(bd => bd.BookDetail_Id);
             modelBuilder.Entity<Fluent_BookDetail>().Property(bd => bd.NumberOfChapters).IsRequired();
+
+            // Book
+            modelBuilder.Entity<Fluent_Book>().HasKey(b => b.Book_Id);
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.ISBN).IsRequired().HasMaxLength(15);
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.Title).IsRequired();
+            modelBuilder.Entity<Fluent_Book>().Property(b => b.Price).IsRequired();
+
+            // Author
+            modelBuilder.Entity<Fluent_Author>().HasKey(b => b.Author_Id);
+            modelBuilder.Entity<Fluent_Author>().Property(b => b.FirstName).IsRequired();
+            modelBuilder.Entity<Fluent_Author>().Property(b => b.LastName).IsRequired();
+            modelBuilder.Entity<Fluent_Author>().Ignore(b => b.FullName);
+
+            // Publisher
+            modelBuilder.Entity<Fluent_Publisher>().HasKey(b => b.Publisher_Id);
+            modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Name).IsRequired();
+            modelBuilder.Entity<Fluent_Publisher>().Property(b => b.Location).IsRequired();
         }
     }
 }
