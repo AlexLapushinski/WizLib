@@ -18,5 +18,7 @@ namespace WizLib_Model.Models
                 return $"{FirstName} {LastName}";
             }
         }
+
+        public ICollection<Fluent_BookAuthor> Fluent_BookAuthors { get; set; }
     }
 }
