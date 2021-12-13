@@ -434,3 +434,8 @@ C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Wo
 C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Category\Upsert.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Book\Index.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Author\Index.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Author\Upsert.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Publisher\Index.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Publisher\Upsert.cshtml.g.cs
