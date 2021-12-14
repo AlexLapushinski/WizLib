@@ -19,7 +19,7 @@ namespace WizLib_Model.Models
         public double Price { get; set; }        
 
         [ForeignKey("BookDetail")] // one-to-one relation
-        public int BookDetail_id { get; set; }
+        public int? BookDetail_id { get; set; }
         public BookDetail BookDetail { get; set; }
 
         [ForeignKey("Publisher")] // one-to-many relation

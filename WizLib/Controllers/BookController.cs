@@ -2,13 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+//using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 using WizLib_DataAccess.Data;
 using WizLib_Model.Models;
+using WizLib_Model.ViewModels;
 
 namespace WizLib.Controllers
 {
-    public class BookController : Controller
+    public class BookController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ApplicationDBContext _db;
 
@@ -23,14 +26,19 @@ namespace WizLib.Controllers
             return View(objList);
         }
 
-        /*public IActionResult Upsert(int? id)
+        public IActionResult Upsert(int? id)
         {
-            Category obj = new Category();
+            BookVM obj = new BookVM();
+            obj.PublisherList = _db.Publishers.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Publisher_Id.ToString()
+            });
             if (id == null)
             {
                 return View(obj);
             }
-            obj = _db.Categories.FirstOrDefault(u => u.Category_Id == id);
+            obj.Book = _db.Books.FirstOrDefault(u => u.Book_Id == id);
             if (obj == null)
             {
                 return NotFound();
@@ -40,76 +48,28 @@ namespace WizLib.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Category obj)
+        public IActionResult Upsert(BookVM obj)
         {
-            if (ModelState.IsValid)
+            if (obj.Book.Book_Id == 0)
             {
-                if (obj.Category_Id == 0)
-                {
-                    // create
-                    _db.Categories.Add(obj);
-                }
-                else
-                {
-                    // update
-                    _db.Categories.Update(obj);
-                }
-                _db.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                // create
+                _db.Books.Add(obj.Book);
             }
-            return View(obj);
+            else
+            {
+                // update
+                _db.Books.Update(obj.Book);
+            }
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int id)
         {            
-            var obj = _db.Categories.FirstOrDefault(u => u.Category_Id == id);
-            _db.Categories.Remove(obj);
+            var obj = _db.Books.FirstOrDefault(u => u.Book_Id == id);
+            _db.Books.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-
-        public IActionResult CreateMultiple2()
-        {
-            List<Category> catList = new List<Category>();
-            for (int i=1; i <= 2; i++)
-            {
-                catList.Add(new Category { Name = Guid.NewGuid().ToString() });
-                //_db.Categories.Add(new Category { Name = Guid.NewGuid().ToString() });
-            }
-            _db.Categories.AddRange(catList);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult CreateMultiple5()
-        {
-            List<Category> catList = new List<Category>();
-            for (int i = 1; i <= 5; i++)
-            {
-                catList.Add(new Category { Name = Guid.NewGuid().ToString() });
-                //_db.Categories.Add(new Category { Name = Guid.NewGuid().ToString() });
-            }
-            _db.Categories.AddRange(catList);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult RemoveMultiple2()
-        {
-            IEnumerable<Category> catList = _db.Categories.OrderByDescending(u => u.Category_Id).Take(2).ToList();
-            
-            _db.Categories.RemoveRange(catList);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult RemoveMultiple5()
-        {
-            IEnumerable<Category> catList = _db.Categories.OrderByDescending(u => u.Category_Id).Take(5).ToList();
-
-            _db.Categories.RemoveRange(catList);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }*/
     }
 }
