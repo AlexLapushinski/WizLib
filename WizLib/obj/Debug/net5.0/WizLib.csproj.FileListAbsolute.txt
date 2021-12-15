@@ -442,3 +442,4 @@ C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Publisher\Upsert.csht
 C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Work\Courses\WizLib\WizLib\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Book\Upsert.cshtml.g.cs
+C:\Work\Courses\WizLib\WizLib\obj\Debug\net5.0\Razor\Views\Book\Details.cshtml.g.cs
