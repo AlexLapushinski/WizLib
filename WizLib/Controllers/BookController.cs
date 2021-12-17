@@ -229,7 +229,21 @@ namespace WizLib.Controllers
             var viewList1 = _db.BookDetailsFromViews.FirstOrDefault();
             var viewList2 = _db.BookDetailsFromViews.Where(u => u.Price > 500);
 
+            // raw SQL
+            var bookRaw = _db.Books.FromSqlRaw("Select * from dbo.books").ToList();
+
+            // interpolation, protected from SQL injection
+            int id = 2;
+            var bookTmp = _db.Books.FromSqlInterpolated($"Select * from dbo.books where Book_Id={id}").ToList();
+
+            // .NET 5 only
+            // filters
+            var BookFilter1 = _db.Books.Include(e => e.BookAuthors.Where(p => p.Author_Id == 1)).ToList();
+            var BookFilter2 = _db.Books.Include(e => e.BookAuthors.OrderByDescending(p => p.Author_Id)).Take(5).ToList();
+
+
             return RedirectToAction(nameof(Index));
+
         }
     }
 }
