@@ -121,5 +121,53 @@ namespace WizLib.Controllers
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult PlayGround()
+        {
+            var bookTemp = _db.Books.FirstOrDefault();
+            bookTemp.Price = 100;
+
+            var bookCollection = _db.Books;
+            double totalPrice = 0;
+
+            foreach (var book in bookCollection)
+            {
+                totalPrice += book.Price;
+            }
+
+            var bookList = _db.Books.ToList();
+            foreach (var book in bookList)
+            {
+                totalPrice += book.Price;
+            }
+
+            var bookCollection2 = _db.Books;
+            var bookCount1 = bookCollection2.Count();
+
+            var bookCount2 = _db.Books.Count();
+
+            IEnumerable<Book> BookList1 = _db.Books; // IEnumerable filtering on client side
+            var FilteredBooks1 = BookList1.Where(b => b.Price > 500).ToList();
+
+            IQueryable<Book> BookList2 = _db.Books; // IQueryable filtering on server side
+            var FilteredBooks2 = BookList2.Where(b => b.Price > 500).ToList();
+
+            var category = _db.Categories.FirstOrDefault();
+            _db.Entry(category).State = EntityState.Modified;  // update state manually
+            _db.SaveChanges();
+
+            // update related data
+            var BookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
+            BookTemp1.BookDetail.NumberOfChapters = 23423;
+            _db.Update(BookTemp1);
+            _db.SaveChanges();
+
+            var BookTemp2 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
+            BookTemp2.BookDetail.Weight = 22;
+            _db.Attach(BookTemp2);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
