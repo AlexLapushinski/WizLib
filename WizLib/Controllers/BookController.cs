@@ -214,15 +214,20 @@ namespace WizLib.Controllers
             _db.SaveChanges();
 
             // update related data
-            var BookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
-            BookTemp1.BookDetail.NumberOfChapters = 23423;
-            _db.Update(BookTemp1);
-            _db.SaveChanges();
+            //var BookTemp1 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
+            //BookTemp1.BookDetail.NumberOfChapters = 23423;
+            //_db.Update(BookTemp1);
+            //_db.SaveChanges();
 
-            var BookTemp2 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
-            BookTemp2.BookDetail.Weight = 22;
-            _db.Attach(BookTemp2);                    // Attach is more effective than Update
-            _db.SaveChanges();
+            //var BookTemp2 = _db.Books.Include(b => b.BookDetail).FirstOrDefault(b => b.Book_Id == 2);
+            //BookTemp2.BookDetail.Weight = 22;
+            //_db.Attach(BookTemp2);                    // Attach is more effective than Update
+            //_db.SaveChanges();
+
+            // VIEWS
+            var viewList = _db.BookDetailsFromViews.ToList();
+            var viewList1 = _db.BookDetailsFromViews.FirstOrDefault();
+            var viewList2 = _db.BookDetailsFromViews.Where(u => u.Price > 500);
 
             return RedirectToAction(nameof(Index));
         }
